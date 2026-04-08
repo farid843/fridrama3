@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Presentasi Hukum: Larangan Sebar Screenshot Chat | Farid & Rama - Informatika 3</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0F;
+            color: #EFF3F6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .presentation-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+            width: 100%;
+        }
+
+        section.slide {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 3rem;
+            position: relative;
+            background: radial-gradient(circle at 10% 20%, rgba(25, 25, 35, 1) 0%, #0A0A0F 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-glass {
+            background: rgba(20, 20, 30, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 2.5rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease;
+        }
+
+        .container-content {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #FFFFFF, #9AA9FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            border-left: 5px solid #F43F5E;
+            padding-left: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #FFB347;
+        }
+
+        .badge-law {
+            background: #1E1E2F;
+            color: #FFB347;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,180,70,0.3);
+        }
+
+        .pasal-box {
+            background: #111118;
+            border-left: 6px solid #EF4444;
+            padding: 1.2rem;
+            border-radius: 1rem;
+            margin: 1.2rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(0,0,0,0.45);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .highlight-red {
+            color: #F87171;
+            font-weight: 800;
+        }
+
+        .highlight-blue {
+            color: #6B9FFF;
+            font-weight: 800;
+        }
+
+        .huge-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #F43F5E;
+            line-height: 1;
+        }
+
+        .footer-slide {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #5A5A70;
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #4B4B63;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .dot.active {
+            background: #F43F5E;
+            width: 24px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 780px) {
+            section.slide {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .grid-2col, .grid-3col {
+                grid-template-columns: 1fr;
+            }
+            .nav-dots {
+                display: none;
+            }
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            font-weight: 300;
+            border-left: 3px solid #9AA9FF;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .icon-large {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #9AA9FF;
+        }
+
+        hr {
+            border-color: rgba(255,255,255,0.1);
+            margin: 1rem 0;
+        }
+
+        .btn-soft {
+            background: rgba(244, 63, 94, 0.15);
+            border-radius: 40px;
+            padding: 0.5rem 1rem;
+            color: #F87171;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .author-name {
+            background: linear-gradient(135deg, #D9E2FF, #9AA9FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        .list-custom {
+            list-style: none;
+            padding-left: 0;
+        }
+        .list-custom li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+        .list-custom li i {
+            margin-top: 0.2rem;
+            color: #F43F5E;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container" id="slidesContainer">
+        <!-- SLIDE 1 : COVER -->
+        <section class="slide" id="slide1">
+            <div class="container-content" style="text-align: center;">
+                <div class="badge-law" style="background:#1E293B; margin-bottom: 1rem;">
+                    <i class="fas fa-gavel"></i> PRESENTASI HUKUM & ETIKA DIGITAL
+                </div>
+                <h1>📱 JERAT HUKUM & ETIKA DIGITAL</h1>
+                <p style="font-size: 1.6rem; font-weight: 600; margin: 1rem 0;">Larangan Menyebarkan Screenshot Chat Tanpa Izin</p>
+                <div style="height: 2px; width: 80px; background: #F43F5E; margin: 1.5rem auto;"></div>
+                <p style="font-size: 1.2rem; color: #B9C3D4;">
+                    <i class="fas fa-user-friends"></i> <strong class="author-name">Farid & Rama</strong> <br> 
+                    <i class="fas fa-laptop-code"></i> Mata Pelajaran: <strong>Informatika 3</strong>
+                </p>
+                <div style="margin-top: 3rem;">
+                    <span class="btn-soft"><i class="fas fa-arrow-down"></i> Scroll untuk menyelami materi lengkap (6 Slide)</span>
+                </div>
+            </div>
+            <div class="footer-slide">#DigitalPrivacyMatters | Disusun oleh Farid & Rama - Informatika 3</div>
+        </section>
+
+        <!-- SLIDE 2 : FENOMENA SOSIAL + LANDASAN HUKUM (PENGANTAR) -->
+        <section class="slide" id="slide2">
+            <div class="container-content">
+                <div class="badge-law"><i class="fas fa-exclamation-triangle"></i> FENOMENA & LANDASAN HUKUM</div>
+                <h2>Mengapa Screenshot Chat Berbahaya?</h2>
+                <div class="card-glass" style="margin-bottom: 1.5rem;">
+                    <p style="font-size: 1.1rem; line-height: 1.5;">Di era digital, praktik <strong>menyebarkan screenshot percakapan pribadi</strong> tanpa izin menjadi fenomena yang marak terjadi. Mulai dari grup WhatsApp, media sosial, hingga forum daring. Banyak yang menganggap remeh, padahal tindakan ini tidak hanya melanggar <strong>etika digital</strong> tetapi juga memiliki <strong>konsekuensi pidana yang berat</strong>.</p>
+                    <div class="quote-text" style="margin-top: 1rem;">
+                        <i class="fas fa-quote-left"></i> Setiap kali kita membagikan chat orang lain tanpa izin, kita sedang merobek privasi seseorang.
+                    </div>
+                </div>
+                <div class="grid-2col">
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line icon-large" style="font-size: 2rem;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Dampak Sosial & Psikologis</h3>
+                        <p>Korban penyebaran chat tanpa izin sering mengalami kecemasan, depresi, kehilangan pekerjaan, bahkan putus hubungan sosial. Viral yang tidak terkontrol bisa menghancurkan reputasi dalam hitungan jam.</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-balance-scale icon-large" style="font-size: 2rem;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Triple Protection Law</h3>
+                        <p>Indonesia memiliki 3 payung hukum utama: <strong>UU ITE (No.1/2024), UU PDP (No.27/2022), dan KUHP</strong>. Ketiganya saling melengkapi untuk menjerat pelaku penyebaran chat ilegal.</p>
+                    </div>
+                </div>
+                <div class="pasal-box" style="border-left-color: #3B82F6; margin-top: 0.5rem;">
+                    <i class="fas fa-gavel"></i> <strong>Catatan penting:</strong> Chat WhatsApp, Telegram, atau platform apapun yang bersifat <strong>privat</strong> (bukan publik) masuk dalam ranah data pribadi yang dilindungi konstitusi.
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3 : PASAL-PASAL LENGKAP UU ITE (27A, 27B, 45) -->
+        <section class="slide" id="slide3">
+            <div class="container-content">
+                <div class="badge-law"><i class="fas fa-laptop-code"></i> UU INFORMASI DAN TRANSAKSI ELEKTRONIK</div>
+                <h2>⚖️ Jerat UU ITE (UU No. 1 Tahun 2024)</h2>
+                <div class="grid-2col">
+                    <div class="card-glass">
+                        <i class="fas fa-file-alt" style="color:#F87171;"></i>
+                        <h3 style="font-size: 1.3rem;">Pasal 27A</h3>
+                        <p>Setiap orang dengan sengaja menyerang kehormatan/nama baik orang lain dengan cara menuduhkan suatu hal melalui Informasi Elektronik.</p>
+                        <div class="btn-soft" style="margin-top: 0.8rem; display: inline-block;">Pasal 45 ayat (4): Pidana penjara 2 tahun / denda Rp400 juta</div>
+                    </div>
+                    <div class="card-glass">
+                        <i class="fas fa-skull" style="color:#F87171;"></i>
+                        <h3 style="font-size: 1.3rem;">Pasal 27B ayat (2)</h3>
+                        <p>Ancaman menyebarkan data pribadi/chat untuk memeras atau menguntungkan diri sendiri/orang lain secara melawan hukum.</p>
+                        <div class="btn-soft" style="margin-top: 0.8rem; background:rgba(244,63,94,0.25);">Pasal 45 ayat (10): Penjara 6 tahun / denda Rp1 Miliar</div>
+                    </div>
+                </div>
+                <div class="pasal-box" style="margin-top: 0.5rem;">
+                    <strong><i class="fas fa-info-circle"></i> Penjelasan lebih rinci:</strong> 
+                    Screenshot chat yang berisi celaan, fitnah, atau informasi yang memalukan, lalu di-share ke grup WhatsApp, Twitter, Instagram, atau platform manapun — meskipun hanya dengan teman dekat — bisa dikenakan Pasal 27A jika terbukti ada unsur kesengajaan untuk diketahui umum. Sementara jika ada <strong>ancaman "aku sebar chat ini kalau kamu tidak bayar"</strong>, maka itu masuk Pasal 27B (pemerasan elektronik) dengan ancaman lebih berat.
+                </div>
+                <div class="quote-text" style="margin-top: 1rem;">
+                    <i class="fas fa-dove"></i> Contoh kasus: Mahasiswa yang menyebarkan screenshot percakapan pribadi teman sekelas ke forum kampus tanpa izin, dapat dilaporkan dengan pasal ini.
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4 : UU PERLINDUNGAN DATA PRIBADI (PDP) + KUHP -->
+        <section class="slide" id="slide4">
+            <div class="container-content">
+                <div class="badge-law"><i class="fas fa-id-card"></i> UU PDP & KUHP</div>
+                <h2>🛡️ Perlindungan Data Pribadi & Pencemaran Nama Baik</h2>
+                <div class="grid-2col">
+                    <div class="stat-card">
+                        <i class="fas fa-user-secret icon-large"></i>
+                        <h3>UU No. 27/2022 (PDP)</h3>
+                        <p><strong>Pasal 65 ayat (1):</strong> Dilarang mengungkapkan Data Pribadi yang bukan miliknya secara melawan hukum.</p>
+                        <p><strong>Pasal 67:</strong> Ancaman pidana penjara <span class="highlight-red">4 tahun</span> atau denda <span class="highlight-red">Rp4 Miliar</span>.</p>
+                        <hr>
+                        <p><i class="fas fa-mobile-alt"></i> Screenshot chat yang memuat nama, alamat, nomor telepon, foto, atau informasi kesehatan termasuk data pribadi spesifik.</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-gavel icon-large"></i>
+                        <h3>KUHP (Pencemaran Nama Baik)</h3>
+                        <p><strong>KUHP Lama Pasal 310:</strong> Penjara maksimal 9 bulan - 1 tahun karena pencemaran nama baik melalui tulisan/lisan.</p>
+                        <p><strong>KUHP Baru (UU 1/2023 Pasal 433):</strong> Setiap orang yang menyerang kehormatan nama baik di muka umum dengan maksud diketahui publik, dipidana penjara maksimal 1 tahun 6 bulan atau denda kategori IV (Rp50 juta).</p>
+                        <div class="btn-soft" style="margin-top: 0.5rem;">Pencemaran via screenshot masuk kategori ini</div>
+                    </div>
+                </div>
+                <div class="card-glass" style="margin-top: 0.5rem;">
+                    <p><strong>Sinergi antar pasal:</strong> Jika seseorang menyebarkan screenshot chat tanpa izin yang berisi data pribadi dan tuduhan mencemarkan, maka ia bisa dijerat dengan <strong>3 pasal sekaligus (UU ITE + UU PDP + KUHP)</strong> melalui sistem berlapis (concursus realis).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5 : PENGECUALIAN + KASUS ILUSTRATIF -->
+        <section class="slide" id="slide5">
+            <div class="container-content">
+                <div class="badge-law"><i class="fas fa-question-circle"></i> BATASAN & KASUS</div>
+                <h2>Kapan Boleh? Dan Contoh Kasus</h2>
+                <div class="grid-2col">
+                    <div class="card-glass">
+                        <i class="fas fa-shield-haltered"></i>
+                        <h3>Pengecualian Hukum</h3>
+                        <ul class="list-custom">
+                            <li><i class="fas fa-check-circle" style="color:#4ADE80;"></i> <strong>Kepentingan umum & penegakan hukum:</strong> Melaporkan tindak pidana ke polisi (bukti chat ancaman/pemerasan).</li>
+                            <li><i class="fas fa-check-circle" style="color:#4ADE80;"></i> <strong>Pembelaan di pengadilan:</strong> Menunjukkan screenshot sebagai alat bukti sah dalam proses peradilan.</li>
+                            <li><i class="fas fa-check-circle" style="color:#4ADE80;"></i> <strong>Izin eksplisit:</strong> Jika pemilik chat memberikan persetujuan tertulis/lisan untuk disebarkan.</li>
+                        </ul>
+                        <p class="highlight-red" style="margin-top: 0.8rem;">⚠️ Di luar itu, semua penyebaran tanpa izin berisiko pidana!</p>
+                    </div>
+                    <div class="card-glass">
+                        <i class="fas fa-gavel"></i>
+                        <h3>Kasus Ilustratif</h3>
+                        <p><strong>Kasus:</strong> Seorang mahasiswa menyebarkan screenshot percakapan pribadi teman sekelasnya ke grup angkatan tanpa izin. Chat tersebut berisi keluhan pribadi yang bersifat memalukan. Akibatnya, korban mengalami tekanan psikologis berat dan dilaporkan ke polisi.</p>
+                        <p><strong>Putusan:</strong> Pengadilan menjatuhkan vonis <span class="highlight-red">8 bulan penjara</span> dan denda Rp50 juta berdasarkan Pasal 27A UU ITE karena terbukti dengan sengaja menyerang kehormatan melalui informasi elektronik.</p>
+                        <div class="btn-soft" style="margin-top: 0.8rem;">Pelajaran: Satu klik bisa berujung pidana!</div>
+                    </div>
+                </div>
+                <div class="pasal-box" style="border-left-color: #FFB347; margin-top: 0.5rem;">
+                    <i class="fas fa-search"></i> <strong>Catatan:</strong> Kasus di atas hanyalah ilustrasi. Dalam praktik nyata, hakim mempertimbangkan niat, dampak, dan bukti-bukti lain.
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6 : KESIMPULAN + REFERENSI + PESAN PENUTUP -->
+        <section class="slide" id="slide6">
+            <div class="container-content">
+                <div class="badge-law"><i class="fas fa-lightbulb"></i> KESIMPULAN</div>
+                <h2>Kesimpulan: Privasi Dilindungi Hukum</h2>
+                <div class="grid-2col" style="margin-bottom: 1rem;">
+                    <div class="stat-card">
+                        <i class="fas fa-clipboard-list icon-large"></i>
+                        <h3>Rangkuman Poin Penting</h3>
+                        <ul class="list-custom">
+                            <li><i class="fas fa-check"></i> Screenshot chat tanpa izin = tindakan melawan hukum (UU ITE, UU PDP, KUHP).</li>
+                            <li><i class="fas fa-check"></i> Ancaman hukuman maksimal: penjara <strong class="highlight-red">6 tahun</strong> (pemerasan) & denda hingga <strong class="highlight-red">Rp4 Miliar</strong> (UU PDP).</li>
+                            <li><i class="fas fa-check"></i> Tidak ada namanya "hanya share ke grup kecil" — jika merugikan orang lain, tetap pidana.</li>
+                            <li><i class="fas fa-check"></i> Etika digital: selalu minta izin sebelum menyebarkan percakapan pribadi.</li>
+                        </ul>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-book-open icon-large"></i>
+                        <h3>Daftar Referensi Hukum</h3>
+                        <ul class="list-custom">
+                            <li><i class="fas fa-gavel"></i> Undang-Undang No. 1 Tahun 2024 tentang Perubahan Kedua atas UU ITE (UU 11/2008).</li>
+                            <li><i class="fas fa-gavel"></i> Undang-Undang No. 27 Tahun 2022 tentang Perlindungan Data Pribadi (PDP).</li>
+                            <li><i class="fas fa-gavel"></i> Kitab Undang-Undang Hukum Pidana (KUHP) dan UU No. 1 Tahun 2023 tentang KUHP Baru.</li>
+                            <li><i class="fas fa-gavel"></i> Peraturan Kominfo serta yurisprudensi pengadilan terkait kasus penyebaran chat.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-glass" style="margin-top: 0.5rem; text-align: center;">
+                    <i class="fas fa-quote-right" style="font-size: 2rem; opacity: 0.6;"></i>
+                    <p style="font-weight: 600; margin-top: 0.5rem;">"Kebebasan berekspresi berakhir ketika privasi orang lain dimulai."</p>
+                    <hr style="width: 50%; margin: 1rem auto;">
+                    <p style="font-size: 0.9rem;">Presentasi oleh <strong>Farid & Rama</strong> — Mata Pelajaran Informatika 3</p>
+                    <p style="font-size: 0.8rem; color: #8A8A9E;">Materi ini disusun untuk keperluan edukasi hukum digital dan literasi privasi.</p>
+                </div>
+                <div class="footer-slide" style="margin-top: 1rem; position: relative;">Terima kasih | Semoga bermanfaat untuk memahami larangan menyebarkan chat tanpa izin</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots" id="navDots"></div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('navDots');
+        const container = document.getElementById('slidesContainer');
+
+        function updateActiveDot() {
+            const scrollPosition = container.scrollTop;
+            const slideHeight = slides[0]?.clientHeight || window.innerHeight;
+            const activeIndex = Math.round(scrollPosition / slideHeight);
+            document.querySelectorAll('.dot').forEach((dot, idx) => {
+                if (idx === activeIndex) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        }
+
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (idx === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    const slideHeight = slides[0]?.clientHeight || window.innerHeight;
+                    container.scrollTo({ top: idx * slideHeight, behavior: 'smooth' });
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        container.addEventListener('scroll', () => requestAnimationFrame(updateActiveDot));
+        window.addEventListener('resize', () => updateActiveDot());
+        createDots();
+        updateActiveDot();
+        setTimeout(updateActiveDot, 100);
+    </script>
+</body>
+</html>
